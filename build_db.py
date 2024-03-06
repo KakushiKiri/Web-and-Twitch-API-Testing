@@ -24,8 +24,6 @@ mycursor.execute("CREATE TABLE Artists (ArtistID int AUTO_INCREMENT PRIMARY KEY,
 mycursor.execute("CREATE TABLE Songs (SongID int AUTO_INCREMENT PRIMARY KEY, Song_Name varchar(255), Genre varchar(255), Language varchar(255), ArtistID int, FOREIGN KEY (ArtistID) REFERENCES Artists(ArtistID))")
 
 #Loop through data variable, and insert into respective table
-artist_set = set()
-cnt = 0
 for song in data:
     #Grab ArtistID from current artist name
     check_artist_sql = "SELECT ArtistID FROM Artists WHERE Artist_Name = %s"
