@@ -16,10 +16,8 @@ mydb = mysql.connector.connect(
 #Set up cursor for database
 mycursor = mydb.cursor()
 
-#Delete any existing tables
-mycursor.execute("DROP TABLE IF EXISTS Songs")
-mycursor.execute("DROP TABLE IF EXISTS Artists")
 #Create songs and artists tables
+
 mycursor.execute("CREATE TABLE Artists (ArtistID int AUTO_INCREMENT PRIMARY KEY, Artist_Name varchar(255))")
 mycursor.execute("CREATE TABLE Songs (SongID int AUTO_INCREMENT PRIMARY KEY, Song_Name varchar(255), Genre varchar(255), Language varchar(255), ArtistID int, FOREIGN KEY (ArtistID) REFERENCES Artists(ArtistID))")
 
@@ -44,10 +42,4 @@ for song in data:
     song_sql = "INSERT INTO Songs (Song_Name, Genre, Language, ArtistID) VALUES (%s,%s,%s,%s)"
     song_vals = (song['song_name'],song['genre'],song['language'], artist_id)
     mycursor.execute(song_sql,song_vals)
-
 mydb.commit()
-
-mycursor.execute("SELECT * FROM songs")
-tables = mycursor.fetchall()
-for table in tables:
-    print(table)
