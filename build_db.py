@@ -9,7 +9,7 @@ data = json.load(open(local_fname))
 mydb = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="TTV~KakuKiri1",
+    password="",
     database="karaoke"
 )
 
