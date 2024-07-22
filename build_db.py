@@ -5,14 +5,6 @@ import json
 local_fname = "Song_List.json"
 data = json.load(open(local_fname))
 
-#Connect to mySQL
-mydb = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="",
-    database="karaoke"
-)
-
 #Set up cursor for database
 mycursor = mydb.cursor()
 
